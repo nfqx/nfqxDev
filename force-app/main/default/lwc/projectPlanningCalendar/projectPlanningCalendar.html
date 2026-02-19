@@ -1,3 +1,60 @@
 <template>
-    
+    <!-- First Row -->
+    <lightning-layout>
+        <lightning-layout-item size="2">
+            {label.projectPlanning}
+        </lightning-layout-item>
+        <lightning-layout-item size="6">&nbsp;</lightning-layout-item>
+        <lightning-layout-item size="4">
+            <!-- Buttons -->
+        </lightning-layout-item>
+    </lightning-layout>
+    <!-- END First Row -->
+
+    <!-- Data Section -->
+    <template if:true={dataLoaded}>        
+        <template if:true={hasData}>
+            <!-- First Row -->
+            <lightning-layout>
+                <lightning-layout-item size="2">&nbsp;</lightning-layout-item>
+                <template for:each={selectedWeeks} for:item="selectedWeek">
+                    <lightning-layout-item size="2" key={selectedWeek.weekNumber}>
+
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+            <!-- END First Row -->
+
+            <!-- ALL ROWS -->
+            <template for:each={projectEmployeeData} for:item="project">
+                <lightning-layout key={project.Id}>
+                    <lightning-layout-item size="2">
+
+                    </lightning-layout-item>
+                    <template for:each={selectedWeeks} for:item="selectedWeek">
+                        <lightning-layout-item size="2" key={selectedWeek.weekNumber}>
+
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+                <template for:each={project.employees} for:item="employee">
+                    <lightning-layout key={employee.Id}>
+                        <lightning-layout-item size="2">
+                            
+                        </lightning-layout-item>
+                        <template for:each={employee.plannings} for:item="planning">
+                            <lightning-layout-item size="2" key={planning.calendarWeek.weekNumber}>
+
+                            </lightning-layout-item>
+                        </template>
+                    </lightning-layout>
+                </template>
+            </template>
+        </template>        
+    </template>
+    <!-- End Data Section -->
+
+    <!-- Modal -->
+
+    <!-- END MODAL -->
 </template>
