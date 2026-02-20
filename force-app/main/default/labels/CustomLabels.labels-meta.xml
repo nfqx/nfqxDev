@@ -61,7 +61,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>GeneralLabelProjectMode</shortDescription>
-        <value>Project</value>
+        <value>Project Mode</value>
     </labels>
     <labels>
         <fullName>GeneralLabelProjectPlanning</fullName>

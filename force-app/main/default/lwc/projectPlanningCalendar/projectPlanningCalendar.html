@@ -1,12 +1,23 @@
 <template>
+    <!-- Logo Row -->
+    <lightning-layout>
+        <lightning-layout-item size="2">
+            <img src={nfqxLogoUrl} style="width: 150px;"/>
+        </lightning-layout-item>
+        <lightning-layout-item size="10">&nbsp;</lightning-layout-item>
+    </lightning-layout>
+    <!-- END Logo Row -->
+
     <!-- First Row -->
     <lightning-layout>
         <lightning-layout-item size="2">
-            {label.projectPlanning}
+            <h1>{label.projectPlanning}</h1>
         </lightning-layout-item>
         <lightning-layout-item size="6">&nbsp;</lightning-layout-item>
         <lightning-layout-item size="4">
-            <!-- Buttons -->
+            <lightning-button style="float: right; margin: 0 0.25rem;" label={label.saveLabel} onclick={handleSaveRecord}></lightning-button>
+            <lightning-button style="float: right; margin: 0 0.25rem;" label={label.employeeMode} onclick={switchToEmployeeOverview}></lightning-button>
+            <lightning-button style="float: right; margin-left: 0.25rem;" label={label.changeTimeFrame} onclick={handleOpenCalendar}></lightning-button>
         </lightning-layout-item>
     </lightning-layout>
     <!-- END First Row -->

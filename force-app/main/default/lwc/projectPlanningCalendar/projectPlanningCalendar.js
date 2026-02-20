@@ -1,4 +1,6 @@
 import { LightningElement, track } from 'lwc';
+import { NavigationMixin } from "lightning/navigation";
+import NFQXLOGO from '@salesforce/resourceUrl/NFQXLOGO';
 
 import projectPlanning from '@salesforce/label/c.GeneralLabelProjectPlanning';
 import changeTimeFrame from '@salesforce/label/c.GeneralLabelChangeTimeFrame';
@@ -11,7 +13,11 @@ import calendarWeekAbbreviation from '@salesforce/label/c.GeneralLabelCalendarWe
 import retrieveCalendarData from "@salesforce/apex/ProjectPlanningController.retrieveCalendarData";
 import retrieveCurrentWeeks from "@salesforce/apex/ProjectPlanningController.retrieveCurrentWeeks";
 
-export default class ProjectPlanningCalendar extends LightningElement {
+export default class ProjectPlanningCalendar extends NavigationMixin(LightningElement) {
+    get nfqxLogoUrl() {
+        return NFQXLOGO;
+    }
+
     label = {
         projectPlanning,
         changeTimeFrame,
@@ -41,5 +47,22 @@ export default class ProjectPlanningCalendar extends LightningElement {
                 this.hasData = this.projectEmployeeData.length > 0;
             })
         });
+    }
+
+    switchToEmployeeOverview(){
+        this[NavigationMixin.Navigate]({
+            type: "standard__navItemPage",
+            attributes: {
+                apiName: "ProjectPlanningEmployeeOverview",
+            },
+        });
+    }
+
+    handleSaveRecord(){
+
+    }
+
+    handleOpenCalendar(){
+        
     }
 }
